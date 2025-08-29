@@ -219,4 +219,20 @@ import InputField from "@/Components/InputField.vue";
 />
 </template>
 ```
-  
+
+## Logout User
+```javascript
+<script setup>
+import { Link, router } from '@inertiajs/vue3'
+
+const logout = () => {
+    router.post(route('logout'))
+}
+</script>
+
+<template>
+    <button v-on:click="logout" class="block px-4 py-2 text-sm text-gray-900 w-full text-left" :class="{ 'bg-gray-100': active }">
+        Sign out
+    </button>                  
+</template>
+```
