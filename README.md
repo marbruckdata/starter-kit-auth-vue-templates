@@ -64,7 +64,7 @@ if (Features::enabled(Features::registration())) {
 Route::get('/auth/login', LoginIndexController::class)->name('auth.login');
 ```
 
-## FIx login if a not logged in user want to access a page
+## Fix login if a not logged in user want to access a page
 - app/Http/Middleware/Authenticate.php
 ```php
 <?php
