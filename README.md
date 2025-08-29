@@ -129,7 +129,80 @@ class AppServiceProvider extends ServiceProvider
         JsonResource::withoutWrapping();
     }
 }
-
 ```
 
+## Upgrade to register, login form (and any other form)
+- Create in Components an InputField.vue
+```javascript
+<script>
+export default {
+    name: "InputField",
+    props: {
+        label: {
+            type: String,
+            required: false,
+        },
+        id: {
+            type: String,
+            required: true,
+        },
+        placeholder: {
+            type: String,
+            required: true,
+        },
+        type: {
+            type: String,
+            default: "text",
+        },
+        modelValue: {
+            type: String,
+            required: true,
+        },
+        errors: {
+            type: String,
+            default: null,
+        },
+    },
+
+};
+</script>
+
+<template>
+    <div>
+        <label :for="id" class="text-sm font-medium text-gray-900">{{ label }}</label>
+        <div class="mt-2">
+            <input
+                :type="type"
+                :id="id"
+                :placeholder="placeholder"
+                :class="'w-full py-2 text-gray-900 border-gray-300 text-sm ' + (errors ? 'border-red-500' : '')"
+                :value="modelValue"
+                @input="$emit('update:modelValue', $event.target.value)"
+            />
+            <div v-if="errors" class="text-sm text-red-500 mt-2">
+                {{ errors }}
+            </div>
+        </div>
+    </div>
+</template>
+
+<style scoped>
+</style>
+
+```
+- Use the component to add an input field
+```javascript
+<script setup>
+import InputField from "@/Components/InputField.vue";
+</script>
+
+<template>
+<InputField
+    id="email"
+    v-model="form.email"
+    placeholder="Enter Email"
+    :errors="form.errors.email"
+/>
+</template>
+```
   
