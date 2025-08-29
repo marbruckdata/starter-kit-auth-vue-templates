@@ -132,7 +132,7 @@ class AppServiceProvider extends ServiceProvider
 ```
 
 ## Upgrade to register, login form (and any other form)
-- Create in Components an InputField.vue
+- Create in Components directory an InputField.vue
 ```javascript
 <script>
 export default {
@@ -191,6 +191,20 @@ export default {
 
 ```
 - Use the component to add an input field
+Instead of using this:
+```javascript
+<div>
+                <label for="name" class="">Name</label> // label for
+                <div class="mt-2">
+                    <input type="text" id="name" class="" v-model="form.name"> // input type, input id, input v-model
+                    <div v-if="form.errors.name" class="text-sm text-red-500 mt-2"> // on error
+                        {{ form.errors.name }} // on error label
+                    </div>
+                </div>
+            </div>
+```
+
+We use this:
 ```javascript
 <script setup>
 import InputField from "@/Components/InputField.vue";
