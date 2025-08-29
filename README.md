@@ -233,6 +233,7 @@ const logout = () => {
 <template>
     <button v-on:click="logout" class="block px-4 py-2 text-sm text-gray-900 w-full text-left" :class="{ 'bg-gray-100': active }">
         Sign out
-    </button>                  
+    </button>
+    <Link href="/logout" method="post" as="button" class="text-blue-500 hover:underline">Log Out</link>              
 </template>
 ```
