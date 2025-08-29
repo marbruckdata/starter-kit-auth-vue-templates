@@ -194,14 +194,14 @@ export default {
 Instead of using this:
 ```javascript
 <div>
-                <label for="name" class="">Name</label> // label for
-                <div class="mt-2">
-                    <input type="text" id="name" class="" v-model="form.name"> // input type, input id, input v-model
-                    <div v-if="form.errors.name" class="text-sm text-red-500 mt-2"> // on error
-                        {{ form.errors.name }} // on error label
-                    </div>
-                </div>
-            </div>
+    <label for="name" class="">Name</label> // label for
+    <div class="mt-2">
+        <input type="text" id="name" class="" v-model="form.name"> // input type, input id, input v-model
+        <div v-if="form.errors.name" class="text-sm text-red-500 mt-2"> // on error
+            {{ form.errors.name }} // on error label
+        </div>
+    </div>
+</div>
 ```
 
 We use this:
