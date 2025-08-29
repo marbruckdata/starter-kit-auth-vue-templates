@@ -56,11 +56,13 @@ const form = useForm({
 ```
 
 ## Setup routes in web.php
+```php
 if (Features::enabled(Features::registration())) {
     Route::get('/auth/register', RegisterIndexController::class)->name('auth.register');
 }
 
 Route::get('/auth/login', LoginIndexController::class)->name('auth.login');
+```
 
 
 
