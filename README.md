@@ -276,7 +276,7 @@ const logout = () => {
 ```
 
 
-## Disble registraion
+## Disable registraion
 ### Backend
 In routes web.php
 ```php
