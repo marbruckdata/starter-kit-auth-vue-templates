@@ -274,3 +274,52 @@ const logout = () => {
     <Link href="/logout" method="post" as="button" class="text-blue-500 hover:underline">Log Out</Link>              
 </template>
 ```
+
+
+## Disble registraion
+### Backend
+In routes web.php
+```php
+if (Features::enabled(Features::registration())) {
+    Route::get('/auth/register', RegisterIndexController::class)->name('auth.register');
+}
+```
+In config.fortify.php
+```php
+'features' => [
+        // Features::registration(),
+        Features::resetPasswords(),
+        Features::emailVerification(),
+        Features::updateProfileInformation(),
+        Features::updatePasswords(),
+        Features::twoFactorAuthentication([
+            'confirm' => true,
+            'confirmPassword' => true,
+            // 'window' => 0,
+        ]),
+    ],
+```
+
+### Frontend
+Setup HandleInertiaRequests.php
+```php
+public function share(Request $request): array
+    {
+        return array_merge(parent::share($request), [
+            'features' => collect(config('fortify.features'))->mapWithKeys(fn ($key) => [$key => true])->merge([
+                'security' => Features::hasSecurityFeatures(),
+            ]),
+        ]);
+    }
+
+```
+
+Setup Vue Page (v-if="$page.props.features.registration")
+```javascript
+<Link :href="route('auth.register')" class="inline-flex items-center border-b-2 border-transparent text-sm font-medium text-gray-900" v-if="$page.props.features.registration">
+    Create an account
+</Link>
+```
+
+
+
