@@ -316,7 +316,7 @@ public function share(Request $request): array
 
 Setup Vue Page (v-if="$page.props.features.registration")
 ```javascript
-<Link :href="route('auth.register')" class="inline-flex items-center border-b-2 border-transparent text-sm font-medium text-gray-900" v-if="$page.props.features.registration">
+<Link :href="route('auth.register')" v-if="$page.props.features.registration" class="">
     Create an account
 </Link>
 ```
