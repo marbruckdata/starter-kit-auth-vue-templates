@@ -56,7 +56,35 @@ const form = useForm({
 
 ## Populate current signed in User
 
-In app/Http/Middleware/HandleInertiaRequests.php there should be the auth attribute:
+- Create a UserResource with php artisan make:resource UserResource
+```php
+<?php
+
+namespace App\Http\Resources;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class UserResource extends JsonResource
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(Request $request): array
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+        ];
+    }
+}
+```
+
+
+- In app/Http/Middleware/HandleInertiaRequests.php there should be the auth attribute:
 
 ```php
 public function share(Request $request): array
@@ -68,3 +96,7 @@ public function share(Request $request): array
         ]);
     }
 ```
+
+- In any template use {{ $page.props.auth.user }} to get information of the current signed in user
+
+  
