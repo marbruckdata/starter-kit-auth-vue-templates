@@ -54,3 +54,17 @@ const form = useForm({
 </template>
 ```
 
+## Populate current signed in User
+
+In app/Http/Middleware/HandleInertiaRequests.php there should be the auth attribute:
+
+```php
+public function share(Request $request): array
+    {
+        return array_merge(parent::share($request), [
+            'auth' => [
+                'user' => $request->user() ? UserResource::make($request->user()) : null
+            ],
+        ]);
+    }
+```
