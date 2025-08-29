@@ -204,7 +204,7 @@ Instead of using this:
 </div>
 ```
 
-We use this:
+We use this (example for email, aplly any other fields see above):
 ```javascript
 <script setup>
 import InputField from "@/Components/InputField.vue";
