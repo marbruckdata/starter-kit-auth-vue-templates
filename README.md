@@ -98,6 +98,9 @@ public function share(Request $request): array
 ```
 
 - In any template use {{ $page.props.auth.user }} to get information of the current signed in user
+- User name: {{ $page.props.auth.user.name }}
+- User email: {{ $page.props.auth.user.name }}
+
 
 - Get rid of the data wrapper from like data: { ... } In app/Providers/AppServiceProvider.php use in boot function 'JsonResource::withoutWrapping();'
 ```php
