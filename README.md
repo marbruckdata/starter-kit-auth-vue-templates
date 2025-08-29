@@ -8,6 +8,7 @@
 - on error label: {{ form.errors.name }}, {{ form.errors.email }}, {{ form.errors.password }}, {{ form.errors.password_confirmation }}
 - input v-model: form.name, form.email, form.password, form.password_confirmation
 
+
 ## Login Form
 - label for, input id: email, password
 - label itself e.g. : Email, Password
@@ -53,6 +54,15 @@ const form = useForm({
     <Head title="Create an account" />
 </template>
 ```
+
+## Setup routes in web.php
+if (Features::enabled(Features::registration())) {
+    Route::get('/auth/register', RegisterIndexController::class)->name('auth.register');
+}
+
+Route::get('/auth/login', LoginIndexController::class)->name('auth.login');
+
+
 
 ## Populate current signed in User
 
