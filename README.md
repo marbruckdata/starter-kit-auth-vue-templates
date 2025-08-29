@@ -190,7 +190,7 @@ export default {
 </style>
 
 ```
-- Use the component to add an input field
+
 Instead of using this:
 ```javascript
 <div>
