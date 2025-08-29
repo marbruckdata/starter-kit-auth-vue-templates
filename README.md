@@ -238,6 +238,6 @@ const logout = () => {
     </button>
 
     // VERSION 2
-    <Link href="/logout" method="post" as="button" class="text-blue-500 hover:underline">Log Out</link>              
+    <Link href="/logout" method="post" as="button" class="text-blue-500 hover:underline">Log Out</Link>              
 </template>
 ```
